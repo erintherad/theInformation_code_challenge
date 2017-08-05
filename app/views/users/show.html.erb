@@ -20,6 +20,6 @@
   <div class="actions">
     <%= f.submit "Update", class: "button small radius" %>
     <%= flash[:success] unless flash[:success].blank? %>
-    <%= flash[:error] unless flash[:error].blank? %>
+    <%= flash[:alert] unless flash[:alert].blank? %>
   </div>
 <% end %>

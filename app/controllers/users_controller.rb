@@ -8,8 +8,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    binding.pry
+    if current_user
+      form_params = params.require(:user).permit(user_params)
+      current_user.update_attributes(user_params)
       redirect_back(fallback_location: root_path)
       flash[:success] = "Your email preferences are saved!"
     else
