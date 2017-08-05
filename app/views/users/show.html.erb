@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User: <%= @user.name %></h1>
+<p>Email: <%= @user.email %></p>
+
+<h3>Email Preferences</h3>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+      <%= f.check_box :marketing %>
+      <%= f.label "Marketing" %>
+  </div>
+  <div class="field">
+      <%= f.check_box :articles %>
+      <%= f.label "Articles" %>
+  </div>
+  <div class="field">
+      <%= f.check_box :digest %>
+      <%= f.label "Digest" %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit "Update", class: "button small radius" %>
+  </div>
+<% end %>
