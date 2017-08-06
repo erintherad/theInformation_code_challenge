@@ -7,23 +7,23 @@ class UsersController < ApplicationController
     @nonce = params[:token]
     email = params[:email]
     token = Token.find_by(:nonce => @nonce)
-    @user = token.user
-    if @user.email == email
-      @user
-    else
+    @user = User.find_by(:email => email)
+
+    if token.nil? || @user != token.user
       render :invalid
     end
   end
 
   def update
-    @user = User.find(params[:id])
+    nonce = params[:nonce]
+    @user = Token.consume(nonce)
     if @user
       @user.update_attributes(user_params)
       flash[:success] = "Your email preferences are saved!"
-      render :show
+      render :success
     else
       flash[:alert] = "Oops there was an error when updating your preferences. Try again!"
-      render :show
+      render :invalid
     end
   end
 
