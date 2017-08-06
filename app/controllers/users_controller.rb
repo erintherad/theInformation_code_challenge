@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    nonce = params[:token]
+    @nonce = params[:token]
     email = params[:email]
-    token = Token.find_by(:nonce => nonce)
+    token = Token.find_by(:nonce => @nonce)
     @user = token.user
     if @user.email == email
       @user
