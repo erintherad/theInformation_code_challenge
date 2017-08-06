@@ -3,7 +3,7 @@
 
 <h3>Email Preferences</h3>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, {:url => :email_preferences, :method => :put}) do |f| %>
   <div class="field">
       <%= f.check_box :marketing %>
       <%= f.label "Marketing" %>
