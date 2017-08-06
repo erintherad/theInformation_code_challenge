@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     if current_user
       form_params = params.require(:user).permit(user_params)
       current_user.update_attributes(user_params)
