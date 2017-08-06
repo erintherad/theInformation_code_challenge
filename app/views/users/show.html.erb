@@ -11,7 +11,7 @@
       <%= f.label "Articles" %>
       <%= f.check_box :digest %>
       <%= f.label "Digest" %>
-      <input type="checkbox" id="all_email_preferences">
+      <input type="checkbox" onclick="selectAll()" id="all_email_preferences">
       <label for="all_email_preferences">All Email Preferences</label>
       <input type="hidden" name="nonce" value="<%= @nonce %>">
   </div>
