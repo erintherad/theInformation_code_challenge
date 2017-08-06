@@ -7,17 +7,13 @@
   <div class="field">
       <%= f.check_box :marketing %>
       <%= f.label "Marketing" %>
-  </div>
-  <div class="field">
       <%= f.check_box :articles %>
       <%= f.label "Articles" %>
-  </div>
-  <div class="field">
       <%= f.check_box :digest %>
       <%= f.label "Digest" %>
-  </div>
-  <div class="field">
-    <input type="hidden" name="nonce" value="<%= @nonce %>">
+      <input type="checkbox" id="all_email_preferences">
+      <label for="all_email_preferences">All Email Preferences</label>
+      <input type="hidden" name="nonce" value="<%= @nonce %>">
   </div>
   <br>
   <div class="actions">
