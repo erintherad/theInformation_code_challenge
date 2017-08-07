@@ -1,6 +1,5 @@
-function selectAll(){
-  $("input:checkbox").each(function(){
-    $(this).attr('checked', true);
+$(document).ready(function() {
+  $('input#all_email_preferences').on('click', function() {
+    $('input:checkbox[name=emailList]').prop('checked', this.checked);
   });
-  return false;
-}
+});
