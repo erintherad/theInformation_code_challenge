@@ -25,16 +25,20 @@ class UsersController < ApplicationController
     if @user
       @user.update_attributes(user_params)
       flash[:success] = "Your email preferences are saved!"
-      render :success
+      redirect_to root_path
     else
       flash[:alert] = "Oops there was an error when updating your preferences. Try again!"
       render :invalid
     end
   end
 
+  def destroy
+    @user.destroy
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :marketing, :articles, :digest)
+    params.require(:user).permit(:email, :name, :marketing, :articles, :digest)
   end
 end
