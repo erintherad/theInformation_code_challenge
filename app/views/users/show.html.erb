@@ -17,8 +17,10 @@
   </div>
   <br>
   <div class="actions">
-    <%= f.submit "Update", class: "button small radius" %>
+    <%= f.submit "Update", class: "btn btn-outline-primary btn-sm" %>
     <%= flash[:success] if flash[:success] %>
     <%= flash[:alert] if flash[:alert] %>
   </div>
 <% end %>
+
+<%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
