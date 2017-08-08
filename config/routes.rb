@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#show"
+  root "users#index"
   resources :users
 
   get "/email-preferences", to: "users#show"

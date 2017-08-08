@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+    @tokens = Token.all
+  end
+
   def new
     @user = User.new
   end
