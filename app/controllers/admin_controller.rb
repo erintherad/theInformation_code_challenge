@@ -1,9 +1,11 @@
 class AdminController < ApplicationController
+  # Lists all users from admin root
   def index
     logout
     @users = User.all
   end
 
+  # Renders new page to create new users
   def new
     if current_user
       redirect_to root_path
@@ -13,6 +15,7 @@ class AdminController < ApplicationController
     end
   end
 
+  # Creates new user and redirects to user#show
   def create
     if current_user
       redirect_to root_path
@@ -27,11 +30,13 @@ class AdminController < ApplicationController
     end
   end
 
+  # Deletes user from admin root
   def delete
     User.find(params[:id]).destroy
     redirect_to root_path
   end
 
+  # Generates a new token for a user from admin root
   def generate_token
     u = User.find(params[:id])
     Token.generate(u)
