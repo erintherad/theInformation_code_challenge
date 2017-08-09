@@ -8,14 +8,20 @@
 
     <%= form_for(@user, {:url => :email_preferences, :method => :put}) do |f| %>
       <div class="field">
-          <%= f.check_box :marketing, class: "preferences" %>
-          <%= f.label "Marketing" %>
-          <%= f.check_box :articles, class: "preferences" %>
-          <%= f.label "Articles" %>
-          <%= f.check_box :digest, class: "preferences" %>
-          <%= f.label "Digest" %>
-          <input type="checkbox" id="all_email_preferences" checked="<%= @user.marketing && @user.articles && @user.digest %>">
-          <label for="all_email_preferences">All Email Preferences</label>
+        <%= f.check_box :marketing, class: "checkbox", name:"check[]" %>
+        <%= f.label "Marketing" %>
+      </div>
+      <div class="field">
+        <%= f.check_box :articles, class: "checkbox", name:"check[]" %>
+        <%= f.label "Articles" %>
+      </div>
+      <div class="field">
+        <%= f.check_box :digest, class: "checkbox", name:"check[]" %>
+        <%= f.label "Digest" %>
+      </div>
+      <div class="field">
+        <input type="checkbox" id="select_all" name="check[]">
+        <label for="all_email_preferences">All Email Preferences</label>
       </div>
       <br>
       <div class="actions">
