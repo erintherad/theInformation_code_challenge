@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   put "/email-preferences", to: "users#update"
 
   get "/admin", to: "admin#index"
-  get "/admin/new", to: "admin#new"
-  get "/admin/new", to: "admin#create"
+  get "/admin/new", to: "admin#new", as: "admin_new"
+  post "/admin/new", to: "admin#create"
   get "/generate_token/:id", to: "admin#generate_token", as: "generate_token"
   delete "/admin/:id", to: "admin#delete", as: "delete_user"
 end

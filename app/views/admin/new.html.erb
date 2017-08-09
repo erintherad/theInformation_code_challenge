@@ -1,38 +1,42 @@
 <div class="row justify-content-center">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <h2>Create a new user</h2>
-    <%= form_for(@user) do |f| %>
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+  <div class="col-md-8">
+    <h2 class="content-top">Create a new user</h2>
+    <%= form_for :admin do |f| %>
+      <div class="left-indent">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+      <br>
+      <h3>Email Preferences</h3>
+      <div class="left-indent">
+        <div class="form-group">
+          <%= f.check_box :marketing, class: "checkbox" %>
+          <%= f.label "Marketing" %>
+        </div>
+        <div class="form-group">
+          <%= f.check_box :articles, class: "checkbox" %>
+          <%= f.label "Articles" %>
+        </div>
+        <div class="form-group">
+          <%= f.check_box :digest, class: "checkbox" %>
+          <%= f.label "Digest" %>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="select_all">
+          <label for="all_email_preferences">All Email Preferences</label>
+        </div>
       </div>
-      <div class="form-check">
-        <h5>Email Preferences</h6>
-        <label class="form-check-label">
-          <%= f.check_box :marketing %>
-          Marketing
-        </label>
-        <label class="form-check-label">
-          <%= f.check_box :articles %>
-          Articles
-        </label>
-        <label class="form-check-label">
-          <%= f.check_box :digest %>
-          Digest
-        </label>
-      </div>
-      <input type="hidden" name="nonce" value="<%= @nonce %>">
+      <br>
       <div class="actions">
-        <%= f.submit "Create", class: "btn btn-outline-primary btn-sm" %>
+        <%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
+        <%= f.submit "Create", class: "btn btn-primary btn-sm" %>
       </div>
     <% end %>
-    <br>
-    <%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
   </div>
-  <div class="col-md-4"></div>
 </div>
