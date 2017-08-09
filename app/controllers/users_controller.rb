@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    # checking to see if anoynmous user with token and email param in URL
+    # checking to see if there is an anoynmous user with token and email param in URL
     if current_user.nil? && params[:token] && params[:email]
       @user = Token.consume(params[:token])
       # checking to see if the user's email matches the email param
@@ -21,8 +21,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    # sets @user to current_user
     @user = current_user
     if @user
+      # Updates user based on params passed
       @user.update_attributes(user_params)
       flash[:success] = "Your email preferences are saved!"
       render :show
