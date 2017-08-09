@@ -1,29 +1,17 @@
-user1 = User.create(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
-  marketing: false,
-  articles: false,
-  digest: false
-)
+users = [
+  [Faker::Name.name, Faker::Internet.email, false, false, false],
+  [Faker::Name.name, Faker::Internet.email, true, true, true],
+  [Faker::Name.name, Faker::Internet.email, false, true, false],
+  [Faker::Name.name, Faker::Internet.email, true, false, true]
+]
 
-Token.generate(user1)
-
-user2 = User.create(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
-  marketing: true,
-  articles: true,
-  digest: true
-)
-
-Token.generate(user2)
-
-user3 = User.create(
-  name: Faker::Name.name,
-  email: Faker::Internet.email,
-  marketing: false,
-  articles: true,
-  digest: false
-)
-
-Token.generate(user3)
+users.each do |name, email, marketing, articles, digest|
+  user = User.create(
+    name: name,
+    email: email,
+    marketing: marketing,
+    articles: articles,
+    digest: digest
+  )
+  Token.generate(user)
+end
