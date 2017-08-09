@@ -28,6 +28,7 @@
           <% if user.tokens[0].nil? %>
             <td colspan="1"></td>
             <td><%= link_to "Generate Token", generate_token_path(user) %></td>
+            <td colspan="1"></td>
           <% else %>
             <% user.tokens.each do |token| %>
                 <td><%= token.id %></td>
