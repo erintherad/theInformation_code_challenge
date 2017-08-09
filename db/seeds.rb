@@ -1,32 +1,29 @@
-3.times do |u|
-  user1 = User.create(
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    marketing: false,
-    articles: false,
-    digest: false
-  )
-  Token.generate(user1)
-end
+user1 = User.create(
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  marketing: false,
+  articles: false,
+  digest: false
+)
 
-3.times do |u|
-  user2 = User.create(
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    marketing: true,
-    articles: true,
-    digest: true
-  )
-  Token.generate(user2)
-end
+Token.generate(user1)
 
-3.times do |u|
-  user3 = User.create(
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    marketing: false,
-    articles: true,
-    digest: false
-  )
-  Token.generate(user3)
-end
+user2 = User.create(
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  marketing: true,
+  articles: true,
+  digest: true
+)
+
+Token.generate(user2)
+
+user3 = User.create(
+  name: Faker::Name.name,
+  email: Faker::Internet.email,
+  marketing: false,
+  articles: true,
+  digest: false
+)
+
+Token.generate(user3)
