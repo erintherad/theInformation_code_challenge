@@ -1,40 +1,35 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-    @tokens = Token.all
-  end
-
-  def new
-    @user = User.new
-  end
-
   def show
-    @nonce = params[:token]
-    email = params[:email]
-    token = Token.find_by(:nonce => @nonce)
-    @user = User.find_by(:email => email)
-
-    if token.nil? || @user != token.user
+    # checking to see if anoynmous user with token and email param in URL
+    if current_user.nil? && params[:token] && params[:email]
+      @user = Token.consume(params[:token])
+      # checking to see if the user's email matches the email param
+      if @user && @user.email == params[:email]
+        login(@user)
+      else
+        # avoid double-render error
+        return render :invalid
+      end
+    else
+      # if user has been to the page, the set user to current_user
+      @user = current_user
+    end
+    # if user is nil, not logged in, or the params are incorrect, then handle
+    if @user.nil?
       render :invalid
     end
   end
 
   def update
-    nonce = params[:nonce]
-    @user = Token.consume(nonce)
+    @user = current_user
     if @user
       @user.update_attributes(user_params)
       flash[:success] = "Your email preferences are saved!"
-      redirect_to root_path
+      render :show
     else
       flash[:alert] = "Oops there was an error when updating your preferences. Try again!"
       render :invalid
     end
-  end
-
-  def destroy
-    User.find(params[:id]).destroy
-    redirect_to root_path
   end
 
   private
