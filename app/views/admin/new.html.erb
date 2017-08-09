@@ -1,6 +1,6 @@
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <h2 class="content-top">Create a new user</h2>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="content-top">Create a new user or <%= link_to 'go back', root_path %></h2>
     <%= form_for :admin do |f| %>
       <div class="left-indent">
         <div class="form-group">
@@ -12,29 +12,25 @@
           <%= f.text_field :email, class: "form-control" %>
         </div>
       </div>
-      <br>
       <h3>Email Preferences</h3>
       <div class="left-indent">
-        <div class="form-group">
-          <%= f.check_box :marketing, class: "checkbox" %>
-          <%= f.label "Marketing" %>
+        <div class="checkbox">
+          <label><%= f.check_box :marketing, class: "checkbox" %> Marketing</label>
         </div>
-        <div class="form-group">
-          <%= f.check_box :articles, class: "checkbox" %>
-          <%= f.label "Articles" %>
+        <div class="checkbox">
+          <label><%= f.check_box :articles, class: "checkbox" %> Articles</label>
         </div>
-        <div class="form-group">
-          <%= f.check_box :digest, class: "checkbox" %>
-          <%= f.label "Digest" %>
+        <div class="checkbox">
+          <label><%= f.check_box :digest, class: "checkbox" %> Digest</label>
         </div>
-        <div class="form-group">
-          <input type="checkbox" id="select_all">
-          <label for="all_email_preferences">All Email Preferences</label>
+        <div class="checkbox">
+          <label for="all_email_preferences">
+            <input type="checkbox" id="select_all">All Email Preferences
+          </label>
         </div>
       </div>
       <br>
       <div class="actions">
-        <%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
         <%= f.submit "Create", class: "btn btn-primary btn-sm" %>
       </div>
     <% end %>
