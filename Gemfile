@@ -55,6 +55,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry'
 gem 'jquery-rails'
-gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'rails-assets-tether'
 gem 'faker'
