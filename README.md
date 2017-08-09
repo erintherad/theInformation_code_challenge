@@ -2,6 +2,22 @@
 
 Email is a critical communications channel for The Information. The mission for this code challenge is to build a Rails app that permits users to make changes to what types of messages they receive.
 
+## How to run this app
+
+You can run this application by follow this set of instructions:
+
+1. `git clone git@github.com:erintherad/theInformation_code_challenge.git` and `cd` into directory.
+2. `bundle install` all dependencies.
+3. `rake db:setup` to seed and setup database.
+4. Start a server `rails s`
+5. Go to the [browser](http://localhost:3000/).
+
+This will bring you to an admin view of all users.  As admin, you can show, delete or add a new user. Each user will have an associated token.  Should any token be missing, admins can generate a new one.
+
+## Technologies
+
+This app was built with Ruby on Rails and utilizes a SQLite database.
+
 This Ruby on Rails app includes the following features:
 
 ### 1. A _User_ model.
@@ -27,21 +43,6 @@ The view should have two query parameters, _email_ and _token_. If _email_ does 
 
 If the user tries to choose an email address which is already assigned to another user in the system, it should display an error.
 
-### 4. Data fixtures.
+### 4. Seeded data.
 
-There are fixtures for both _User_ and _Token_ in order to get this app up and running locally with seeded the data.
-
-### 5. Tests
-
-Rspec tests are included with this challenge to provide code quality and assurance.
-
-
-## How to run this app
-
-You can run this application by follow this set of instructions:
-
-1. `git clone`
-2. `bundle`
-3. `rake db:seed`
-4. `rails s`
-5. In your browser, go to: `localhost:3000/email-preferences?token=jQQO-6JnmggfQWnWDA7hoBHE0HHtmpdbFxKnOvbZ&email=erin@test.com`
+I used the faker gem to create randomized user data.
