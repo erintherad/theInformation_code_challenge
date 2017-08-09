@@ -1,25 +1,31 @@
 <div class="row justify-content-center">
   <div class="col-md-8 offset-md-4">
-    <h1>User: <%= @user.name %></h1>
-    <p>Email: <%= @user.email %></p>
+    <h1>Welcome <%= @user.name %>!</h1>
+    <p>Your email address that we have is <%= @user.email %></p>
 
-    <h3>Email Preferences</h3>
+    <h3>Email</h3>
+    <p>Email is a critical communications channel for The Information. We email
+      you when an article publishes, we send a digest of the week's
+      news every Saturday that you can catch up on anything you may have
+      missed, and we also periodically send marketing messages with special
+      offers.</p>
+      <p><b>Select which email preferences you'd like:</b></p>
 
     <%= form_for(@user, {:url => :email_preferences, :method => :put}) do |f| %>
       <div class="field">
-        <%= f.check_box :marketing, class: "checkbox", name:"check[]" %>
+        <%= f.check_box :marketing, class: "checkbox" %>
         <%= f.label "Marketing" %>
       </div>
       <div class="field">
-        <%= f.check_box :articles, class: "checkbox", name:"check[]" %>
+        <%= f.check_box :articles, class: "checkbox" %>
         <%= f.label "Articles" %>
       </div>
       <div class="field">
-        <%= f.check_box :digest, class: "checkbox", name:"check[]" %>
+        <%= f.check_box :digest, class: "checkbox" %>
         <%= f.label "Digest" %>
       </div>
       <div class="field">
-        <input type="checkbox" id="select_all" name="check[]">
+        <input type="checkbox" id="select_all">
         <label for="all_email_preferences">All Email Preferences</label>
       </div>
       <br>
