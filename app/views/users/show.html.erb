@@ -1,26 +1,32 @@
-<h1>User: <%= @user.name %></h1>
-<p>Email: <%= @user.email %></p>
+<div class="row justify-content-center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h1>User: <%= @user.name %></h1>
+    <p>Email: <%= @user.email %></p>
 
-<h3>Email Preferences</h3>
+    <h3>Email Preferences</h3>
 
-<%= form_for(@user, {:url => :email_preferences, :method => :put}) do |f| %>
-  <div class="field">
-      <%= f.check_box :marketing, {:name => "emailList" } %>
-      <%= f.label "Marketing" %>
-      <%= f.check_box :articles, {:name => "emailList" } %>
-      <%= f.label "Articles" %>
-      <%= f.check_box :digest, {:name => "emailList" } %>
-      <%= f.label "Digest" %>
-      <input type="checkbox" id="all_email_preferences">
-      <label for="all_email_preferences">All Email Preferences</label>
-      <input type="hidden" name="nonce" value="<%= @nonce %>">
+    <%= form_for(@user, {:url => :email_preferences, :method => :put}) do |f| %>
+      <div class="field">
+          <%= f.check_box :marketing %>
+          <%= f.label "Marketing" %>
+          <%= f.check_box :articles %>
+          <%= f.label "Articles" %>
+          <%= f.check_box :digest %>
+          <%= f.label "Digest" %>
+          <input type="checkbox" id="all_email_preferences">
+          <label for="all_email_preferences">All Email Preferences</label>
+          <input type="hidden" name="nonce" value="<%= @nonce %>">
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Update", class: "btn btn-outline-primary btn-sm" %>
+        <%= flash[:success] if flash[:success] %>
+        <%= flash[:alert] if flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
   </div>
-  <br>
-  <div class="actions">
-    <%= f.submit "Update", class: "btn btn-outline-primary btn-sm" %>
-    <%= flash[:success] if flash[:success] %>
-    <%= flash[:alert] if flash[:alert] %>
-  </div>
-<% end %>
-
-<%= link_to 'Go back', root_path, class: "btn btn-outline-primary btn-sm" %>
+  <div class="col-md-4"></div>
+</div>
