@@ -8,7 +8,7 @@ class AdminController < ApplicationController
     @user = User.new
   end
 
-  def destroy
+  def delete
     User.find(params[:id]).destroy
     redirect_to root_path
   end
